@@ -2,3 +2,4 @@
 *.log
 /front/prod
 /front/dev
+*.db
