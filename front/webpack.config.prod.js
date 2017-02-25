@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?minimize', publicPath: '../'  })
                 // ExtractTextPlugin.extract("style-loader", "css-loader?minimize", { publicPath: '../' })
             },
             {
@@ -29,10 +29,18 @@ module.exports = {
                 loader: "file-loader?name=[path][name].[ext]!img?minimize"
             },
             {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=fonts/[name].[ext]'
+            },
+            {
                 test: /\.html$/,
                 loader: "html-loader"
             }
         ]
+    },
+     externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
     },
     plugins: [
         new ExtractTextPlugin("css/[name].css"),

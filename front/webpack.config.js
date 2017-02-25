@@ -21,12 +21,16 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
-                //loader: ExtractTextPlugin.extract("style-loader", "css-loader", { publicPath: '../' })
+                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader', publicPath: '../' })
+                //loader: ExtractTextPlugin.extract("style-loader", "css-loader", {  })
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
                 loader: "file-loader?name=[path][name].[ext]"
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=fonts/[name].[ext]'
             },
             {
                 test: /\.html$/,

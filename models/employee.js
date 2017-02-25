@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('./index');
 const Department = require('./department');
 
-const Employee = module.exports = sequelize.define('department', {
+const Employee = module.exports = sequelize.define('employee', {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING,
   departmentId: {

@@ -1,9 +1,9 @@
-const Department = require('../models/department');
+const Employee = require('../models/employee');
 
 module.exports.all = (ctx, next) => new Promise((resolve, reject) => {
   if ('GET' != ctx.method) return next;
-  Department.findAll().then(departments => {
-    ctx.body = departments;
+  Employee.findAll().then(employees => {
+    ctx.body = employees;
     resolve();
   });
 });
@@ -11,27 +11,26 @@ module.exports.all = (ctx, next) => new Promise((resolve, reject) => {
 module.exports.add = (ctx, next) => new Promise((resolve, reject) => {
   if ('POST' != ctx.method) return next;
   // TODO: validate request
-  return Department.findOrCreate({ where: ctx.request.body })
-  .then(department => {
-    ctx.body = department;
+  Employee.findOrCreate({ where: ctx.request.body })
+  .then(employee => {
+    ctx.body = employee;
     resolve();
   })
-  .catch(e => reject({ status: 500, data: { message: 'DBError' } }));
+  .catch(e => reject({ status: 500, data: { message: 'DBError' } }));;
 });
 
 module.exports.edit = (ctx, id, next) => new Promise((resolve, reject) => {
   if ('POST' != ctx.method) return next;
   // TODO: validate request
-  Department.findById(id)
-  .then(department => {
-    if(!department) return reject({ 
+  Employee.findById(id)
+  .then(employee => {
+    if(!employee) return reject({ 
       status: 404, 
-      data: { message: 'No matching department found!' } 
+      data: { message: 'No matching employee found!' } 
     });
-    return department.update({
-      name: ctx.request.body.name
-    }).then(dep => {
-      ctx.body = dep;
+    employee.update(ctx.request.body)
+    .then(empl => {
+      ctx.body = empl;
       resolve();
     })
   })
@@ -40,14 +39,14 @@ module.exports.edit = (ctx, id, next) => new Promise((resolve, reject) => {
 
 module.exports.delete = (ctx, id, next) => new Promise((resolve, reject) => {
   if ('DELETE' != ctx.method) return next;
-  // TODO: validate request
-  Department.findById(id)
-  .then(department => {
-    if(!department) return reject({ 
+  // TODO: validate request  
+  Employee.findById(id)
+  .then(employee => {
+    if(!employee) return reject({ 
       status: 404, 
-      data: { message: 'No matching department found!' } 
+      data: { message: 'No matching employee found!' } 
     });
-    department.destroy().then(() => {
+    employee.destroy().then(() => {
       ctx.body = { success: true };
       resolve();
     })
