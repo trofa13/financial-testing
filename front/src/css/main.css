@@ -10,3 +10,22 @@ body {
   height: 100%;
 }
 
+.department {
+  margin-top: 10px;
+}
+
+.department button {
+  margin-left: 5px;
+}
+
+.employee {
+  margin-top: 10px;
+}
+
+.employee button {
+  margin-left: 5px;
+}
+
+.unmarked-list {
+ list-style: none;
+}

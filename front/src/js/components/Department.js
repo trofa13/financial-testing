@@ -1,15 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-const Department = ({name}) => {
+const Department = ({name, remove, id}) => {
     return(
-        <div>
-            <h1 className="h1">{name} deprartment</h1>
+        <div className="department well">
+            <span>{name} deprartment</span> 
+            <button 
+                onClick={remove.bind(null, id)} 
+                type="button" 
+                className="btn btn-xs btn-danger">
+                x
+            </button>
         </div>
     )
 }
 
 Department.propTypes = {
-    name: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    remove: PropTypes.func.isRequired
 };
 
 export default Department;

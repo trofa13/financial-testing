@@ -26,6 +26,8 @@ export default class DepartmentForm extends Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.input.value)
+        if(this.input.value){
+            this.props.addDep(this.input.value);
+        }
     }
 }
