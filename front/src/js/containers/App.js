@@ -8,7 +8,7 @@ class App extends Component {
     <div className="container">
       <ul className="nav nav-pills">
             <li><Link to="/departments">Departments</Link></li>
-            <li><Link to="/departments/employees">Employees</Link></li>
+            <li><Link to="/employees">Employees</Link></li>
       </ul>
       {this.props.children}
     </div>

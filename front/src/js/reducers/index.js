@@ -1,7 +1,8 @@
-const initialState = {
-  user: 'Unknown User'
-};
+import { combineReducers } from 'redux';
+import departments from './departments';
+import employees from './employees';
 
-export default function userstate(state = initialState) {
-  return state;
-}
+export default combineReducers({
+  departments,
+  employees
+});
